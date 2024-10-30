@@ -29,13 +29,13 @@ steps:
     configuration: '$(buildConfiguration)'
 
 
-- task: AzureWebApp@1
+- task: AzureRmWebAppDeployment@4
   inputs:
+    ConnectionType: 'AzureRM'
     azureSubscription: 'Azure subscription 1(06c0d8bd-affe-45f2-a6e6-ee5deabe6413)'
     appType: 'webApp'
-    appName: 'webapp-ozr'
+    WebAppName: 'webapp-ozr'
     deployToSlotOrASE: true
-    resourceGroupName: 'Ressourcegroup01'
-    slotName: 'production'
-    package: '$(build.artifactStagingDirectory)\WebApp.zip'
-    deploymentMethod: 'auto'
+    ResourceGroupName: 'Ressourcegroup01'
+    SlotName: 'production'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
