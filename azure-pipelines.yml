@@ -29,13 +29,14 @@ steps:
     configuration: '$(buildConfiguration)'
 
 
-- task: AzureRmWebAppDeployment@4
+- task: DotNetCoreCLI@2
   inputs:
-    ConnectionType: 'AzureRM'
+    command: 'publish'
+    publishWebProjects: true
+
+- task: AzureWebApp@1
+  inputs:
     azureSubscription: 'Azure subscription 1(06c0d8bd-affe-45f2-a6e6-ee5deabe6413)'
     appType: 'webApp'
-    WebAppName: 'webapp-ozr'
-    deployToSlotOrASE: true
-    ResourceGroupName: 'Ressourcegroup01'
-    SlotName: 'production'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    appName: 'webapp-ozr'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
