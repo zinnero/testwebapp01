@@ -34,7 +34,4 @@ steps:
     azureSubscription: 'Azure subscription 1(06c0d8bd-affe-45f2-a6e6-ee5deabe6413)'
     appType: 'webApp'
     WebAppName: 'nxwebapp99'
-    deployToSlotOrASE: true
-    ResourceGroupName: 'Ressourcegroup01'
-    SlotName: 'production'
     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
